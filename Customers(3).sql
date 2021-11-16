@@ -98,12 +98,24 @@ SET points = points + 50
 WHERE customer_id = (SELECT customer_id
                     FROM orders
                     WHERE order_id = 4 );
-                    
+ 
+ -- update comments column in order table for customers who have more than 3000 points.
 UPDATE orders
-SET comments = 'Gold'
+SET comments = 'Gold customers'
 WHERE customer_id IN (SELECT customer_id
                     FROM customers
-                    WHERE  points > 3000 );                    
+                    WHERE  points > 3000 );    
+
+-- deleting rows
+DELETE FROM customers
+WHERE customer_id = (SELECT customer_id
+                    FROM orders
+                    WHERE order_id = 4 );     
+                    
+                    
+                    
+                    
+                    
                     
                     
 
